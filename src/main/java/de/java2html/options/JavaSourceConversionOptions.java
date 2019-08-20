@@ -115,7 +115,7 @@ public class JavaSourceConversionOptions {
 
   private JavaSourceStyleTable styleTable = JavaSourceStyleTable.getDefault();
   private int tabSize = 2;
-  private boolean showLineNumbers = false;
+  private boolean showLineNumbers = true;
   private boolean showFileName = false;
   private boolean showTableBorder = false;
 
