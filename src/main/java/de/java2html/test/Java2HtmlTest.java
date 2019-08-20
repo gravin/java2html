@@ -1,5 +1,6 @@
 package de.java2html.test;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.StringReader;
 
@@ -12,21 +13,15 @@ import de.java2html.javasource.JavaSourceRun;
 import de.java2html.options.HorizontalAlignment;
 import de.java2html.options.JavaSourceConversionOptions;
 import junit.framework.TestCase;
+import org.apache.commons.io.FileUtils;
 
 public class Java2HtmlTest extends TestCase {
 
-  public void testConvertToHtml() {
+  public void testConvertToHtml() throws IOException {
     //Just a smoke test
-    String result = Java2Html.convertToHtml("public static void main(){}"); //$NON-NLS-1$
-    System.out.println(result);
-    assertNotNull(result);
-    assertTrue(result.indexOf("public") != -1); //$NON-NLS-1$
-    assertTrue(result.indexOf("static") != -1); //$NON-NLS-1$
-    assertTrue(result.indexOf("void") != -1); //$NON-NLS-1$
-    assertTrue(result.indexOf("main") != -1); //$NON-NLS-1$
-    assertTrue(result.indexOf("<font") != -1); //$NON-NLS-1$
-    assertTrue(result.indexOf("</font>") != -1); //$NON-NLS-1$
-    assertTrue(result.indexOf("public static") == -1); //$NON-NLS-1$
+    String result = Java2Html.convertToHtml(FileUtils.readFileToString(new File("E:\\src\\spring-framework\\spring-beans\\src\\main\\java\\org\\springframework\\beans\\BeanWrapperImpl.java"),"utf-8")); //$NON-NLS-1$
+    FileUtils.writeStringToFile(new File("E:\\src\\test.html"),result);
+
   }
 
   public void testConvertWithTabs() {
